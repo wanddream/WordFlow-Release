@@ -19,7 +19,7 @@
 
 ### 安装步骤
 
-1. 下载 [WordFlow-Setup.exe](https://github.com/wanddream/WordFlow-Release/releases/latest)
+1. 下载 [WordFlow-Setup.exe](https://github.com/wanddream/WordFlow-Release/releases/download/v1.0.0/WordFlow-Setup.exe)
 2. 运行安装程序，选择安装位置
 3. 首次运行时，程序会自动弹出模型下载向导
 4. 选择模型并等待下载完成（约 200 MB）

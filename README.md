@@ -26,12 +26,12 @@
 ### 安装器自动下载的文件
 | 文件 | 大小 | 说明 |
 |------|------|------|
-| WordFlow.zip | 72MB | **自包含主程序** - 包含所有运行时，无需.NET |
+| WordFlow.zip | 71.64MB | **完整软件包** - 包含主程序+运行时+PythonASR |
 | paraformer-zh.tar.bz2.part1 | 90MB | **模型第一部分** - 中文Paraformer模型 |
 | paraformer-zh.tar.bz2.part2 | 90MB | **模型第二部分** - 中文Paraformer模型 |
 | paraformer-zh.tar.bz2.part3 | 26MB | **模型第三部分** - 中文Paraformer模型 |
 
-> **注意**：您只需下载8.5KB的安装器，主程序和模型将由安装器自动下载并合并。
+> **注意**：您只需下载8.5KB的安装器，软件包和模型将由安装器自动下载、合并并安装。
 
 ---
 
@@ -54,23 +54,35 @@
 
 2. **运行安装器**
    - 双击运行 `WordFlowInstaller.exe`
+   - 选择安装位置（如：C:\Program Files\WordFlow）
    - 安装器会自动：
-     - 下载 WordFlow.zip (72MB)
+     - 下载 WordFlow.zip (71.64MB)
      - 下载 3个模型部分文件 (90MB+90MB+26MB)
      - 自动合并模型文件为完整文件
-     - 提示用户解压WordFlow.zip
+     - 自动解压WordFlow.zip到安装目录
+     - 自动将合并后的模型文件放置到 `PythonASR\models\` 目录
+     - 创建桌面快捷方式
 
 3. **完成安装**
    - 等待下载完成（取决于网络速度）
-   - 手动解压WordFlow.zip到当前目录
-   - 运行WordFlow.exe启动程序
+   - 安装完成后自动提示
+   - 双击桌面快捷方式启动WordFlow
 
 ### 方法二：手动安装（高级用户）
 
-1. 分别下载三个文件
+1. 分别下载四个文件：
+   - [WordFlow.zip](https://gitee.com/cheng-yanlin/WordFlow-Release/releases/download/v1.0.0/WordFlow.zip)
+   - [paraformer-zh.tar.bz2.part1](https://gitee.com/cheng-yanlin/WordFlow-Release/releases/download/v1.0.0/paraformer-zh.tar.bz2.part1)
+   - [paraformer-zh.tar.bz2.part2](https://gitee.com/cheng-yanlin/WordFlow-Release/releases/download/v1.0.0/paraformer-zh.tar.bz2.part2)
+   - [paraformer-zh.tar.bz2.part3](https://gitee.com/cheng-yanlin/WordFlow-Release/releases/download/v1.0.0/paraformer-zh.tar.bz2.part3)
 2. 解压 WordFlow.zip 到目标目录
-3. 解压 paraformer-zh.tar.bz2 到 `目标目录\Models\`
-4. 运行 WordFlow.exe
+3. 将3个part文件复制到 `目标目录\PythonASR\models\`
+4. 使用命令行合并part文件：
+   ```
+   cd 目标目录\PythonASR\models
+   copy /b paraformer-zh.tar.bz2.part1 + paraformer-zh.tar.bz2.part2 + paraformer-zh.tar.bz2.part3 paraformer-zh.tar.bz2
+   ```
+5. 运行 WordFlow.exe
 
 ---
 
@@ -137,12 +149,19 @@
 ### 模型下载问题
 
 **Q: 模型下载失败或速度慢**
-- 在下载向导中勾选「使用国内镜像」
-- 检查网络代理设置
-- 手动下载模型到 `安装目录/PythonASR/models/` 文件夹
+- 检查网络连接
+- 手动下载3个part文件到 `安装目录\PythonASR\models\` 文件夹
+- 下载地址：
+  - https://gitee.com/cheng-yanlin/WordFlow-Release/releases/download/v1.0.0/paraformer-zh.tar.bz2.part1
+  - https://gitee.com/cheng-yanlin/WordFlow-Release/releases/download/v1.0.0/paraformer-zh.tar.bz2.part2
+  - https://gitee.com/cheng-yanlin/WordFlow-Release/releases/download/v1.0.0/paraformer-zh.tar.bz2.part3
+- 手动合并命令：
+  ```
+  copy /b paraformer-zh.tar.bz2.part1 + paraformer-zh.tar.bz2.part2 + paraformer-zh.tar.bz2.part3 paraformer-zh.tar.bz2
+  ```
 
 **Q: 提示"模型文件损坏"**
-- 删除 `PythonASR/models/` 目录后重新下载
+- 删除 `PythonASR\models\` 目录后重新下载
 - 确认磁盘空间充足（至少 500 MB）
 
 ### 语音识别问题
@@ -193,4 +212,4 @@
 
 ## 反馈与支持
 
-遇到问题或有建议，请在 [Issues](https://github.com/wanddream/WordFlow-Release/issues) 反馈。
+遇到问题或有建议，请在 Gitee Issues 页面反馈。

@@ -1,0 +1,5 @@
+# 忽略模型文件
+paraformer-zh.tar.bz2
+
+# 忽略安装包（已上传到 Release）
+WordFlow-Setup.exe
